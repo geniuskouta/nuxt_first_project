@@ -26,8 +26,9 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
-    '~/components/atoms/',
-    '~/components/molecules/'
+    { path: '~/components/atoms/', extensions: ['vue'] },
+    { path: '~/components/molecules/', extensions: ['vue'] }
+
   ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
