@@ -10,12 +10,12 @@ label {{ label }}
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 
-const inputTypes = ['text', 'number', 'checkbox', 'radio', 'email', 'password']
+const inputTypes = ['text', 'email', 'password']
 
 interface Props {
   label: string
   name: string
-  type: 'text' | 'number' | 'checkbox' | 'radio' | 'email' | 'password'
+  type: 'text' | 'email' | 'password'
   placeholder: 'text'
 }
 

@@ -1,15 +1,30 @@
 <template lang="pug">
-form
-  InputBox(
+FormVue(:submit="log")
+  TextInput(
   label="Email"
   placeholder='john1234@example.com'
   name="email"
   type="email"
   )
-  InputBox(
+  TextInput(
   label="Password"
   placeholder=''
   name="password"
   type="password"
   )
+  SubmitButton(
+    text="Login"
+  )
 </template>
+
+<script>
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  methods: {
+    log () {
+      console.log('hello')
+    }
+  }
+})
+</script>
