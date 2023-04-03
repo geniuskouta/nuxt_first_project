@@ -18,6 +18,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/css/reset.css',
+    '~/assets/css/main.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -27,8 +29,8 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
     { path: '~/components/atoms/', extensions: ['vue'] },
-    { path: '~/components/molecules/', extensions: ['vue'] }
-
+    { path: '~/components/molecules/', extensions: ['vue'] },
+    { path: '~/components/templates/', extensions: ['vue'] }
   ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules

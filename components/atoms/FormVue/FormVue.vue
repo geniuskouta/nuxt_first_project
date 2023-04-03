@@ -1,5 +1,5 @@
 <template lang="pug">
-form(
+StyledForm(
   @submit.prevent="onSubmit"
 )
   slot
@@ -7,12 +7,15 @@ form(
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-
+import { StyledForm } from './styles'
 interface Props {
   submit: (e: FormDataEvent) => void
 }
 
 export default defineComponent({
+  components: {
+    StyledForm
+  },
   props: {
     submit: {
       type: Function as PropType<Props['submit']>,

@@ -1,12 +1,16 @@
 import styled from 'vue-styled-components'
 
-// centered, palevioletred and sized at 1.5em
 export const SubmitBtn = styled.button`
-  display: block;
+  color: #ffffff;
   font-size: 16px;
+  font-weight: bold;
+  text-align: center;
   background-image: none;
-  background-color: transparent;
+  background-color: #0097e6;
+  display: block;
+  width: 100%;
+  padding: 10px;
   border: none;
+  border-radius: 6px;
   cursor: pointer;
-  color: palevioletred;
 `

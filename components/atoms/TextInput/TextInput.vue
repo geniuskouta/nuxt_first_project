@@ -1,15 +1,17 @@
 <template lang="pug">
-label {{ label }}
-  input(
+StyledLabel {{ label }}
+  Required(v-if="required") *
+  StyledInput(
     :type='type'
     :name='name'
     :placeholder='placeholder'
+    :required='required'
   )
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-
+import { StyledInput, StyledLabel, Required } from './styles'
 const inputTypes = ['text', 'email', 'password']
 
 interface Props {
@@ -17,9 +19,15 @@ interface Props {
   name: string
   type: 'text' | 'email' | 'password'
   placeholder: 'text'
+  required: boolean
 }
 
 export default defineComponent({
+  components: {
+    StyledInput,
+    StyledLabel,
+    Required
+  },
   props: {
     label: {
       type: String as PropType<Props['label']>,
@@ -38,6 +46,10 @@ export default defineComponent({
     placeholder: {
       type: String as PropType<Props['placeholder']>,
       default: ''
+    },
+    required: {
+      type: Boolean as PropType<Props['required']>,
+      default: false
     }
   }
 })
