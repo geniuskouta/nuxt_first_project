@@ -19,7 +19,7 @@ StyledForm(:submit="log")
   )
 </template>
 
-<script>
+<script ts>
 import { defineComponent } from 'vue'
 import { PasswordInput, SubmitBtn, Form as StyledForm } from './styles'
 
@@ -30,8 +30,8 @@ export default defineComponent({
     StyledForm
   },
   methods: {
-    log () {
-      console.log('hello')
+    async log () {
+      return await this.$axios.$get('https://jsonplaceholder.typicode.com/todos')
     }
   }
 })
