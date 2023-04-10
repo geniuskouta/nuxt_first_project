@@ -1,11 +1,12 @@
 <template lang="pug">
-
+h1 Welcome!
 </template>
 
 <script>
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'IndexPage'
+  name: 'IndexPage',
+  middleware: ['auth']
 })
 </script>
