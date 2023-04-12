@@ -4,7 +4,7 @@ import { getSessionInfo } from '~/http/auth'
 export default function ({ $axios, redirect } : { $axios: AxiosInstance, redirect: any}) {
   $axios.interceptors.request.use(async (config: AxiosRequestConfig) => {
     // Do something with the request config
-    const { sessionId } = await getSessionInfo()
+    const { sessionId } = (await getSessionInfo()).body
     try {
       if (sessionId === 'test') {
         console.log('allow login')
