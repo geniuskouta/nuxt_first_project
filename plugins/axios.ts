@@ -1,20 +1,10 @@
 import { AxiosError, AxiosRequestConfig, AxiosResponse, AxiosInstance } from 'axios'
-import { getSessionInfo } from '~/http/auth'
+import { errorHandler } from '~/http/error'
 
 export default function ({ $axios, redirect } : { $axios: AxiosInstance, redirect: any}) {
-  $axios.interceptors.request.use(async (config: AxiosRequestConfig) => {
+  $axios.interceptors.request.use((config: AxiosRequestConfig) => {
     // Do something with the request config
-    const { sessionId } = (await getSessionInfo()).body
-    try {
-      if (sessionId === 'test') {
-        console.log('allow login')
-      } else {
-        config.url?.includes('/login') || redirect('/login')
-        throw new Error('do not allow login')
-      }
-    } catch (err) {
-      console.log(err)
-    }
+    console.log('request intercepted')
     return config
   })
 
@@ -26,7 +16,10 @@ export default function ({ $axios, redirect } : { $axios: AxiosInstance, redirec
     },
     (error: AxiosError) => {
       // Do something with the response error
-      console.log('error, intercepted')
+      const isErrorHandled = errorHandler(error, redirect)
+      if (isErrorHandled) {
+        return Promise.resolve()
+      }
       return Promise.reject(error)
     }
   )

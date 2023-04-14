@@ -1,5 +1,5 @@
 <template lang="pug">
-StyledForm(:submit="log")
+StyledForm(:submit="formSubmit")
   TextInput(
   label="Email"
   placeholder='john1234@example.com'
@@ -30,8 +30,11 @@ export default defineComponent({
     StyledForm
   },
   methods: {
-    async log () {
-      return await this.$axios.$get('https://jsonplaceholder.typicode.com/todos')
+    async formSubmit () {
+      return await this.$axios.post('/api/login', {
+        email: 'abc@example.com',
+        password: 'moon'
+      })
     }
   }
 })

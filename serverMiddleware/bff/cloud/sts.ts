@@ -11,7 +11,6 @@ const config = {
 
 // Create a singleton instance of the STS client
 let stsClient: STSClient
-
 export const getSTSClient = () => {
   if (!stsClient) {
     stsClient = new STSClient(config)

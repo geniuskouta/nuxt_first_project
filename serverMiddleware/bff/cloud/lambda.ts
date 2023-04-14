@@ -3,7 +3,10 @@ import { InvokeCommand, InvokeCommandInput, LambdaClient } from '@aws-sdk/client
 import { createAssumeRoleCommand, getSTSClient } from './sts'
 
 const config = {
-  region: process.env.AWS_REGION || ''
+  region: process.env.AWS_REGION || '',
+  httpOptions: {
+    withCredentials: true
+  }
 }
 
 const assumeRoleParams = {
