@@ -9,7 +9,7 @@ StyledForm(
 import { defineComponent, PropType } from 'vue'
 import { StyledForm } from './styles'
 interface Props {
-  submit: (e: FormDataEvent) => void
+  submit: () => void
 }
 
 export default defineComponent({
@@ -23,8 +23,8 @@ export default defineComponent({
     }
   },
   methods: {
-    onSubmit (e: FormDataEvent) {
-      this.submit(e)
+    onSubmit () {
+      this.submit()
     }
   }
 })

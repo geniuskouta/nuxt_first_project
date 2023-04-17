@@ -2,6 +2,8 @@
 StyledLabel {{ label }}
   Required(v-if="required") *
   StyledInput(
+    :value='textValue'
+    @input='update'
     :type='type'
     :name='name'
     :placeholder='placeholder'
@@ -19,7 +21,8 @@ interface Props {
   name: string
   type: 'text' | 'email' | 'password'
   placeholder: 'text'
-  required: boolean
+  required: boolean,
+  value: string
 }
 
 export default defineComponent({
@@ -29,6 +32,10 @@ export default defineComponent({
     Required
   },
   props: {
+    value: {
+      type: String as PropType<Props['value']>,
+      default: ''
+    },
     label: {
       type: String as PropType<Props['label']>,
       default: ''
@@ -50,6 +57,17 @@ export default defineComponent({
     required: {
       type: Boolean as PropType<Props['required']>,
       default: false
+    }
+  },
+  data () {
+    return {
+      textValue: this.value
+    }
+  },
+  methods: {
+    update (textInput: string) {
+      this.textValue = textInput
+      this.$emit('update', { name: this.name, value: this.textValue })
     }
   }
 })
