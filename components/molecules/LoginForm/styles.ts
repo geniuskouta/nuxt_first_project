@@ -3,6 +3,10 @@ import TextInput from '~/components/atoms/TextInput/TextInput.vue'
 import SubmitButton from '~/components/atoms/SubmitButton/SubmitButton.vue'
 import FormVue from '~/components/atoms/FormVue/FormVue.vue'
 
+export const LanguageSelectContainer = styled.div`
+  text-align: right;  
+`
+
 export const Form = styled(FormVue)`
   position: absolute;
   top: calc(50% - 220px);
@@ -13,6 +17,9 @@ export const Form = styled(FormVue)`
   margin: auto;
   padding: 10px;
   box-sizing: border-box;
+`
+export const EmailInput = styled(TextInput)`
+  margin-top: 20px;
 `
 
 export const PasswordInput = styled(TextInput)`

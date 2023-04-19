@@ -1,8 +1,10 @@
 <template lang="pug">
 StyledForm(:submit="formSubmit")
-  TextInput(
+  LanguageSelectContainer
+    LanguageInput
+  EmailInput(
   :value="formData.email"
-  label="Email"
+  :label="$t('loginPage.email')"
   placeholder='john1234@example.com'
   name="email"
   type="email"
@@ -11,7 +13,7 @@ StyledForm(:submit="formSubmit")
   )
   PasswordInput(
   :value="formData.password"
-  label="Password"
+  :label="$t('loginPage.password')"
   placeholder=''
   name="password"
   type="password"
@@ -19,21 +21,23 @@ StyledForm(:submit="formSubmit")
   @update='updateFormData'
   )
   SubmitBtn(
-    text="Login"
+    :text="$t('loginPage.login')"
   )
+
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { PasswordInput, SubmitBtn, Form as StyledForm } from './styles'
+import { EmailInput, PasswordInput, SubmitBtn, Form as StyledForm, LanguageSelectContainer } from './styles'
 
 type UpdateEvent = { name: 'email' | 'password', value: string }
-
 export default defineComponent({
   components: {
+    EmailInput,
     PasswordInput,
     SubmitBtn,
-    StyledForm
+    StyledForm,
+    LanguageSelectContainer
   },
   data () {
     return {

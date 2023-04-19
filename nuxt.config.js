@@ -1,5 +1,6 @@
 
 import logger, { LOGGER_NAME } from './serverMiddleware/logger'
+import i18n from './translation'
 require('dotenv').config()
 
 export default {
@@ -57,11 +58,30 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
+    '@nuxtjs/i18n',
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     '@nuxtjs/proxy'
   ],
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: [
+      {
+        code: 'en',
+        name: 'English'
+      },
+      {
+        code: 'ja',
+        name: '日本語'
+      }
+    ],
+    vueI18n: i18n,
+    detectBrowserLanguage: {
+      useCookie: true
+    }
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
