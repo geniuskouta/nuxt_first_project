@@ -13,20 +13,29 @@ export default {
     AWS_ACCESSKEYID: process.env.AWS_ACCESSKEYID,
     AWS_SECRETACCESSKEY: process.env.AWS_SECRETACCESSKEY
   },
-  head: {
-    title: 'nuxt_first_project',
-    htmlAttrs: {
-      lang: 'en'
-    },
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+  head () {
+    let i18nHead = {}
+    if (this.$nuxtI18nHead) {
+      i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
+    }
+    return {
+      title: 'nuxt_first_project',
+      htmlAttrs: {
+        lang: 'en',
+        ...i18nHead.htmlAttrs
+      },
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: '' },
+        { name: 'format-detection', content: 'telephone=no' },
+        ...i18nHead.meta
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        ...i18nHead.link
+      ]
+    }
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -70,16 +79,20 @@ export default {
     locales: [
       {
         code: 'en',
-        name: 'English'
+        name: 'English',
+        iso: 'en-US'
       },
       {
         code: 'ja',
-        name: '日本語'
+        name: '日本語',
+        iso: 'ja'
       }
     ],
     vueI18n: i18n,
     detectBrowserLanguage: {
-      useCookie: true
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root'
     }
   },
 
