@@ -5,7 +5,7 @@ require('dotenv').config()
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  ssr: false,
+  ssr: true,
   debug: true,
   env: {
     AWS_ROLE: process.env.AWS_ROLE,

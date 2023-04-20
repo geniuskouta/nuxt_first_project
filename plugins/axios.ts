@@ -11,6 +11,9 @@ export default function ({ $axios, redirect } : { $axios: AxiosInstance, redirec
   $axios.interceptors.response.use(
     (response: AxiosResponse) => {
       // Do something with the response data
+      if (response.config.url?.includes('/login')) {
+        redirect('/')
+      }
       console.log('response, intercepted')
       return response
     },

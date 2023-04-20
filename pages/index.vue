@@ -1,5 +1,6 @@
 <template lang="pug">
-h1 Welcome!
+AppLayout
+  h1 Welcome!
 </template>
 
 <script>
